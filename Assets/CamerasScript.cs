@@ -47,7 +47,7 @@ public class CamerasScript : MonoBehaviour
 
         if (Cameras[1].activeInHierarchy)
             Cameras[1].SetActive(false);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(.5f);
 
         _playerSpawned = true;
         Player = GameObject.FindGameObjectWithTag("Player").transform;

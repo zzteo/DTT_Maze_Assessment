@@ -97,6 +97,7 @@ public class Generator : MonoBehaviour {
 				Destroy(GameObject.FindGameObjectWithTag("Player"));
 			}
 			Instantiate(Player, new Vector3(Mathf.Round(Random.Range(startPosition.x, Mathf.Abs(startPosition.x))) + 0.5f, 0, startPosition.z - 0.5f), Quaternion.identity);
+			SoundManager.Instance.PlayAudio(2, 1); //play falling player audio 
 
 			SpawnFinishLine(_finishLine);
 		}
@@ -303,7 +304,7 @@ public class Generator : MonoBehaviour {
 		}
 		/*MeshCombiner.StartCoroutine(MeshCombiner.CombineMeshesDelay(wallHolder, "MazeWithCombinedMeshes", wallMat, 0.1f));*/
 		/*PlayerScript.DestroyWallInFrontOfThePlayer();*/
-		StartCoroutine(MeshCombiner.CombineMeshesDelay(wallHolder, "MazeWithCombinedMeshes", "Walls", wallMat, 0.1f));
+		StartCoroutine(MeshCombiner.CombineMeshesIn4Delay(wallHolder, "MazeWithCombinedMeshes", "Walls", wallMat, 0.1f));
 
 
 		canGenerate = true;
@@ -343,7 +344,7 @@ public class Generator : MonoBehaviour {
 			yield return new WaitForSeconds(0.01f);
 		}
 		/*PlayerScript.DestroyWallInFrontOfThePlayer();*/
-		MeshCombiner.CombineMeshes(wallHolder, "MazeWithCombinedMeshes", "Walls", wallMat);
+		MeshCombiner.CombineMeshesIn4(wallHolder, "MazeWithCombinedMeshes", "Walls", wallMat);
 		canGenerate = true;
 	}
 
@@ -389,8 +390,13 @@ public class Generator : MonoBehaviour {
     {
 	if (GameObject.FindGameObjectsWithTag("Walls") != null) //for the generate maze coroutine
 		{
-			Debug.Log("Previous Maze Destroyed");
-			Destroy(GameObject.FindWithTag("Walls"));
+			GameObject[] previousMaze = GameObject.FindGameObjectsWithTag("Walls");
+			
+			foreach (var maze in previousMaze)
+            {
+				Destroy(maze);
+            }
+			;
 		}
 	}
 

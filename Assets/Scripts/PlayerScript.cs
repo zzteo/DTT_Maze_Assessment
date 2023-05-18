@@ -91,7 +91,6 @@ public class PlayerScript : MonoBehaviour
             }
             else if (!_isMoving && !_cantMoveLeft)
             {
-                Debug.Log("CowCow");
                 _targetPos = transform.position + new Vector3(-1, 0, 0);
                 _isMoving = true;
                 _isMovingLeft = true;
@@ -114,8 +113,7 @@ public class PlayerScript : MonoBehaviour
            
             }
             else if (!_isMoving && !_cantMoveRight)
-            {
-                Debug.Log("Cow");
+            {       
                 _targetPos = transform.position + new Vector3(1, 0, 0);
                 _isMoving = true;
                 _isMovingRight = true;

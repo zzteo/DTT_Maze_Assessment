@@ -9,6 +9,8 @@ TagManager:
   - FinishLine
   - Cow
   - MazeGenerator
+  - UI
+  - Environment
   layers:
   - Default
   - TransparentFX

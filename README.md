@@ -2,4 +2,4 @@
 
 Maze Generator Assessment 
 
-[![Watch the video]](https://youtu.be/GZcFoAVUdEQ)
+[[Demo Video]](https://youtu.be/GZcFoAVUdEQ)
